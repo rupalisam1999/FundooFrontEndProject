@@ -38,7 +38,18 @@ Forgotpassword(data:any){
       'content-type': 'application/json'
     })
   } 
-  return this.httpservice.postService(this.base+`User/ForgotPassword/${data.Email}`, {} ,true,header)
+  return this.httpservice.postService(this.base+`User/ForgotPassword/${data.Email}`, {} ,false,header)
+
+}
+Resetpassword(data:any,token:any){
+  console.log(data)
+  let header={
+    headers:new HttpHeaders({
+      'content-type': 'application/json',
+      'Authorization': 'Bearer '+token
+    })
+  } 
+  return this.httpservice.putService(this.base+`User/resetpassword?Password=${data.Password}&confirmpassword=${data.confirmpassword}`, {} ,true,header)
 
 }
   

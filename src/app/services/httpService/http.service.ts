@@ -12,13 +12,14 @@ export class HttpService {
     console.log(url,payload)
    return this.http.post(url,payload,token && httpOptions)
   }
-  putService(){
+  putService(url:string,payload:any,token:boolean,httpOptions:any){
+    return this.http.put(url,payload,token && httpOptions)
 
   }
-  getService(){
-
+  getService(url:string,token:boolean,httpOptions:any){
+    return this.http.get(url,token && httpOptions)
   }
-  deleteService(){
-    
+  deleteService(url:string,data:any,token:boolean,httpOptions:any){
+    return this.http.delete(url,token && httpOptions)
   }
 }

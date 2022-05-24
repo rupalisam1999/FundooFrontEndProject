@@ -1,0 +1,21 @@
+
+
+<div class="noteSetting" style="width: 60%;margin:35px; margin-left:250px">
+<div *ngIf="!isShow" class="hovericons" style="border: 0px;background-color: white; height: 20px; width: 20px; margin-left:620px ; "fxLayoutAlign="space-between" >
+    <button style="background-color: transparent; border: none;"><img src="../../../assets/images/check_box_black_24dp (1).svg" style="height: 40px;width:40px;"></button> 
+    <button style="background-color: transparent; border: none; "><img src="../../../assets/images/brush_black_24dp (1).svg" style="height: 40px;width:40px"></button> 
+    <button style="background-color: transparent; border: none ;"><img src="../../../assets/images/image s.svg" style="height: 40px;width:40px"></button> 
+</div>
+    <div *ngIf="isShow">
+        <input  class="title" style="font-size: large ;width: 300px;border:none;" placeholder="Title" [(ngModel)]="title">
+        <img style="margin-left: 300px;" src="../../../assets/images/push_pin_s.svg">
+    </div>
+    <div *ngIf="!isShow || isShow" (click)= "show()">
+        <input class="takenote" style="height: 20px;width: 300px;border: none;" placeholder="Take a note..." [(ngModel)]="desc">
+        
+    </div>
+    <div *ngIf="isShow" fxLayout="row" fxLayoutAlign="space-between centre">
+        <app-icons></app-icons>
+        <button  mat-button style="font-size: large;background-color: white;border:0px white;margin-right: 40px;padding-top:35px;" (click)="close()" >Close</button>
+    </div>
+</div>

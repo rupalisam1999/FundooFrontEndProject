@@ -1,0 +1,9 @@
+<div fxLayout="row wrap"  >
+   <div fxLayout="column" fxLayoutAlign="start start"  style="border: 1px solid green; margin: 5px; width: 250px;height: 170px;" *ngFor="let note of receivedNoteList"  fxLayout="column"  fxLayoutAlign="space-around center" class="noteDisplaySetting" [style.background]="note.bgColor" >
+    <p style="margin-right: 170px ;" (click)="openDialog(note)">{{note.title}}</p>
+    <p  style="margin-right: 150px ;" (click)="openDialog(note)">{{note.description}}</p>
+<div style="margin-left: -185px;" class="app-icons" >
+    <app-icons [notedata]="note" (ArchiveEvent)="archiveMessage($event)"(trashEvent)="trashMessage($event)" class="allicons" ></app-icons>
+</div>
+   </div>
+</div>

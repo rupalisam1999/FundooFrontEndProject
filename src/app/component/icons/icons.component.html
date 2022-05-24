@@ -1,0 +1,51 @@
+<div class="icons" >
+<div *ngIf="!isTrashComponent">
+<div style="margin-top: 20px;" fxLayoutAlign="space-between centre" class="iconsSetting">
+
+    <button style="background-color: transparent; border: none; height: 10px;"><img src="../../../assets/images/add_alert_s.svg"></button> 
+    <button style="border: 0px;background-color: transparent;height: 10px;"><img src="../../../assets/images/person_s.svg"></button>
+    
+    <button style="border: 0px;background-color:transparent; height: 10px;" matTooltip="Background color" [matMenuTriggerFor]="color"> <img src="../../../assets/images/palette_s.svg"
+        width="25px" height="25px" style="border:none ; "></button>
+<mat-menu #color="matMenu">
+<div fxLayout="row wrap" style="padding-left: 10px;">
+        <div *ngFor="let color of colorArray" class="bg-color" style="width: 40px;">
+                <button style="height: 30px ;width: 30px;display: block;border-radius: 100px;" mat-icon-button mat-raised-button [matTooltip]="color.name"
+                        [style.background]="color.name"
+                        (click)="changeColor(color?.name)"></button>
+        </div>
+</div>
+</mat-menu>
+    <button style="border: 0px;background-color:transparent; height: 10px;" ><img src="../../../assets/images/image s.svg"></button>
+    <div *ngIf="isDisplayComponent">
+        <button style="border: 0px;background-color: transparent; height: 20px;" class="archive" matTooltip="Archive" (click)="archive(notedata)"> <img
+                src="../../../assets/images/archive_s.svg" width="25px" height="25px"></button>
+    </div>
+    <div *ngIf="isArchiveComponent">
+        <button style="border: 0px;background-color: transparent; height: 20px;"  (click)="archive(notedata);" *ngIf="isArchiveComponent" >
+            <img src="../../../assets/images/unarchive_black_24dp.svg" width="25px" height="25px"></button>
+    </div>
+    <button style="border: 0px;background-color:transparent; height: 10px;"mat-button [matMenuTriggerFor]="menu" *ngIf="!isTrash" ><img src="../../../assets/images/more_s.svg"></button>
+    
+    <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="trash(notedata)">Delete note</button>
+    <button mat-menu-item>Change labels</button>
+    <button mat-menu-item>Add drawing</button>
+    <button mat-menu-item>Make a copy</button>
+    <button mat-menu-item>Show checkboxes</button>
+    <button mat-menu-item>Copy to google Docs</button>
+    </mat-menu>
+       
+    </div >
+</div>
+<div *ngIf="isTrashComponent" style="margin-left: 150px; ">
+    <button matTooltip="Delete Forever" (click)="deleteNotesPermanantly()" style="border:none ;background-color:aliceblue" fxLayout="space between centre"> <img
+            src="../../../assets/images/download delete perme.svg" width="20px" height="20px"></button>
+    <button matTooltip="restore" (click)="trash(notedata)"  style="border:none ;background-color:aliceblue"> <img
+            src="../../../assets/images/download.restore.svg" width="20px" height="20px"></button>
+</div>
+    
+    </div>   
+
+   
+

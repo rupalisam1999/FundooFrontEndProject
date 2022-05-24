@@ -1,0 +1,56 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+    <mat-toolbar color="white" class="example-toolbar">
+      <div fxLayout="row" ngClass.xs="menu-xs" fxLayout.xs="row" fxLayout.xs="10">
+        <button style="border: 0px;" mat-icon-button (click)="snav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+      <div fxLayout="row" fxHide.xs="true" fxHide.sm="true">
+        <img class="keepImage" src="../../../assets/images/keep_2020q4_48dp.png">
+      </div>
+      <h1 class="example-app-name">Fundoo</h1>
+      <div class="wholesearchbox" ngClass.xs="div_wrraper-xs" ngClass.md="div_wrraper-md" ngClass.sm="div_wrraper-sm">
+        <img style="margin-left: 20px; height: 35px;" src="../../../assets/images/SearchBar.svg">
+        <input class="inputSearchbox" type="text" placeholder="Search" (keyup)="filter($event)" [(ngModel)]="filteredString">
+       
+        
+        <!--[(ngModel)]="filteredString"-->
+      </div>
+      <div fxHide.xs="true" fxHide.sm="true">
+        <button style="border: 0px;background-color: white; padding-left: 40px; "><img style="padding-top: 10px;height: 30px;"
+            src="../../../assets/images/refresh_FILL0_wght400_GRAD0_opsz48.svg"></button>
+      </div>
+      <div fxHide.xs="true" fxHide.sm="true">
+        <button class="button"><img style="padding-top: 10px; height: 30px;" src="../../../assets/images/settings_FILL0_wght400_GRAD0_opsz48.svg"></button>
+      </div>
+      <div fxHide.xs="true" fxHide.sm="true">
+        <button class="button"><img style="padding-top: 10px; height: 30px;" src="../../../assets/images/view_list.svg"></button>
+      </div>
+      <div fxHide.xs="true" fxHide.sm="true">
+        <button class="button"><img style="padding-top: 10px; height: 30px; margin-left: 50px;" src="../../../assets/images/apps_FILL0_wght400_GRAD0_opsz48.svg"></button>
+      </div>
+      <div fxHide.xs="true" fxHide.sm="true">
+        <button class="button"><img style="padding-top: 10px; height: 30px; margin-left: 15px;" src="../../../assets/images/person_FILL0_wght400_GRAD0_opsz48.svg"></button>
+      </div>
+      
+
+    </mat-toolbar>
+  
+    <mat-sidenav-container style="border: 2px solid white; height: 30%;" class="example-sidenav-container"
+                           [style.marginTop.px]="mobileQuery.matches ? 100 : 0">
+      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                   [fixedInViewport]="mobileQuery.matches" fixedTopGap="200">
+        <mat-nav-list style="height:300px; margin-left: 2x;" >
+          <a mat-list-item routerLink="/dashboard/Notes" ><img class="icon" src="../../../assets/images/lightbulb_black_24dp.svg">Notes</a>
+          <a mat-list-item routerLink="." ><img class="icon" src="../../../assets/images/reminder.svg">Reminder</a>
+          <a mat-list-item routerLink="." ><img class="icon" src="../../../assets/images/editimage.svg">Editlable</a>
+          <a mat-list-item routerLink="/dashboard/Archive"><img class="icon" src="../../../assets/images/archive_image.svg">Archive</a>
+          <a mat-list-item routerLink="/dashboard/Trash" ><img class="icon" src="../../../assets/images/delet image.svg">Trash</a>
+        </mat-nav-list>
+      </mat-sidenav>
+  
+      <mat-sidenav-content>
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
