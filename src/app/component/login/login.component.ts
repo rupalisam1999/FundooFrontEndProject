@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-
+import {MatSnackBar} from '@angular/material/snack-bar';
 import { UserService } from 'src/app/services/userService/user.service';
+
+
+
+
 
 
 @Component({
@@ -14,8 +17,10 @@ import { UserService } from 'src/app/services/userService/user.service';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   submitted = false;
+  
+  
 
-  constructor(private formBuilder: FormBuilder, private user: UserService) { }
+  constructor(private formBuilder: FormBuilder, private user: UserService,private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -38,7 +43,17 @@ export class LoginComponent implements OnInit {
       }
       //console.log("helllooo")
       this.user.login(data).subscribe((res: any) => {
-        console.log(res);
+        console.log(res.message);
+       localStorage.setItem('token',res.message);
+       this.snackBar.open('login Successfull  !','',{
+        duration: 5000,
+      });
+      
+    },error => {
+     this.snackBar.open('Please enter correct data','',{
+       duration: 2000,
+     });
+       
       })
     }
     else {
