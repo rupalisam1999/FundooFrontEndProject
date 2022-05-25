@@ -1,5 +1,6 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
+import { DataService } from 'src/app/services/dataService/data.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,6 +9,9 @@ import {MediaMatcher} from '@angular/cdk/layout';
 })
 export class DashboardComponent implements OnDestroy {
   filteredString:string = '';
+  titleSearch:string='';
+  
+  @Output() DisplayEvent = new EventEmitter<string>();
 
   mobileQuery: MediaQueryList;
 
@@ -26,7 +30,8 @@ export class DashboardComponent implements OnDestroy {
   private _mobileQueryListener: () => void;
   nextData: any;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher ,private data:DataService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -35,12 +40,15 @@ export class DashboardComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
-  filter(filteredString:any)
+  keyFunction(event:any)
 {
-    this.filteredString.localeCompare(filteredString.target.value);
+    console.log("event",event.target.value)
+    this.data.changeMessage(event.target.value)
 }
 
-  shouldRun = /(^|.)(stackblitz|webcontainer).(io|com)$/.test(window.location.host);
+
+
+  
 }
 
 

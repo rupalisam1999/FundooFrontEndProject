@@ -1,26 +1,25 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
+
 @Pipe({
   name: 'filter'
 })
 export class FilterPipe implements PipeTransform {
+  item:any
 
-  transform(value:any,filteredSting:string) {
-    if(value.length  ===0 || filteredSting===''){
-      return value;
-    }
+  transform( items:any ,titleSearch:string ) {
  
-    const childMsg=[];
-    //const users=[];
-    for(const note of value)
-    {
-      if(note.title.toLocaleLowerCase().includes(filteredSting) || note.description.toLocaleLowerCase().includes(filteredSting))
-      {
-       childMsg.push(note);
-      
-      }
-    }
-    return childMsg;
-   }
+  if (items && items.length){
+    return items.filter((item: { title: string; }) =>{
+        if (titleSearch && item.title.toLowerCase().indexOf(titleSearch.toLowerCase()) === -1){
+            return false;
+        }
+        return true;
+   })
+}
+else{
+    return items;
+}
+}
  
  }

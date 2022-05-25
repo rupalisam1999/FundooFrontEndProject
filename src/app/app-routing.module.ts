@@ -16,6 +16,7 @@ import { TrashComponent } from './component/trash/trash.component';
 
 const routes: Routes = [
   {path:'register',component:RegisterComponent},
+  { path: '', redirectTo: "/dashboard", pathMatch: 'full' },
   {path:'login',component:LoginComponent},
   {path:'forgot-password',component:ForgotPasswordComponent},
   {path:'reset-password/:token',component:ResetPasswordComponent},

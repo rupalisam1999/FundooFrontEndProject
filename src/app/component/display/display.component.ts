@@ -11,42 +11,46 @@ import { UpdateComponent } from '../update/update.component';
 })
 export class DisplayComponent implements OnInit {
   
+  filteredSting:string = '';
+  titleSearch:string = '';
   
   @Input() receivedNoteList:any;
-  @Output() UpdateEvent = new EventEmitter<string>();
-  @Output() ArchiveEvent = new EventEmitter<string>();
-  @Output() trashEvent = new EventEmitter<string>();
+  
+  @Output() DisplayEvent = new EventEmitter<string>();
  
 
-  constructor(public dialog: MatDialog,) { }
+  constructor(public dialog: MatDialog,private data:DataService) { }
 
   ngOnInit(): void {
-   // this.subscription = this.data.currentMessage.subscribe(message => this.message = message)
+  this.data.currentMessage.subscribe(message  => {
+    console.log(message)
+    this.titleSearch=message
+  } )
 
 
   }
  
   openDialog(note:any): void {
     const dialogRef = this.dialog.open(UpdateComponent, {
-      width: '500px',
+      width: '300px',
+      height:'auto',
       data:note,
+      panelClass: 'my-custom-dialog-class'
       
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.UpdateEvent.emit("Hello")
+      this.DisplayEvent.emit("Hello")
       
       
     });
    
   }
-  archiveMessage(event:any){
-    this.ArchiveEvent.emit("Hello")
+  DisplayMessage(event:any){
+    this.DisplayEvent.emit("Hello")
   }
-  trashMessage(event:any){
-    this.trashEvent.emit("Hello")
-  }
+ 
   
   
 

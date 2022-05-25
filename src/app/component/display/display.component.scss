@@ -5,7 +5,7 @@
     // border: 1px solid black;width: 100px;margin-left: 400px;
     // height: 100px;
     // border-radius: 14px;
-    border: 1px solid rgb(199, 207, 199); 
+    border: 1px solid rgb(40, 184, 40); 
     //width:600px;
     margin-left: 70px;
     border-color: #e0e0e0;
@@ -13,7 +13,8 @@
     border-radius: 14px;
     width: 230px;
     height: 120px;
-    padding-top: 10px;
+    padding-top: 5px;
+    background-size: auto;
     
 }
 .gridToList
@@ -41,3 +42,8 @@
 .app-icons{
     margin-left: 20px;
 }
+:ng-deep .my-custom-dialog-class {
+    mat-dialog-container {
+      padding: 0;
+    }
+  }
