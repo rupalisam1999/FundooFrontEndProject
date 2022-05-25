@@ -27,7 +27,7 @@ export class TrashComponent implements OnInit {
     }
   )}
   
-  trashMessage(event:any){
+  DisplayMessage(event:any){
     this.getAllNotes();
   }
   deleteMessage(event:any){

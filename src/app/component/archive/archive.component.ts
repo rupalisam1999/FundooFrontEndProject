@@ -25,7 +25,7 @@ export class ArchiveComponent implements OnInit {
       })
     }
   )}
-archiveMessage(event:any){
+DisplayMessage(event:any){
     this.GetAllNotes();
   }
  

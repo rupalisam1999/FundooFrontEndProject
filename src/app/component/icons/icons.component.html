@@ -18,12 +18,12 @@
 </mat-menu>
     <button style="border: 0px;background-color:transparent; height: 10px;" ><img src="../../../assets/images/image s.svg"></button>
     <div *ngIf="isDisplayComponent">
-        <button style="border: 0px;background-color: transparent; height: 20px;" class="archive" matTooltip="Archive" (click)="archive(notedata)"> <img
+        <button style="border: 0px;background-color: transparent; height: 20px;" class="archive" matTooltip="Archive" (click)="archive()"> <img
                 src="../../../assets/images/archive_s.svg" width="25px" height="25px"></button>
     </div>
     <div *ngIf="isArchiveComponent">
-        <button style="border: 0px;background-color: transparent; height: 20px;"  (click)="archive(notedata);" *ngIf="isArchiveComponent" >
-            <img src="../../../assets/images/unarchive_black_24dp.svg" width="25px" height="25px"></button>
+        <button style="border: 0px;background-color: transparent; height: 20px;" matTooltip="Unarchive" (click)="Unarchive();"*ngIf="isArchiveComponent">
+            <img src="../../../assets/images/unarchive_black_24dp.svg"   width="25px" height="25px"></button>
     </div>
     <button style="border: 0px;background-color:transparent; height: 10px;"mat-button [matMenuTriggerFor]="menu" *ngIf="!isTrash" ><img src="../../../assets/images/more_s.svg"></button>
     
@@ -41,7 +41,7 @@
 <div *ngIf="isTrashComponent" style="margin-left: 150px; ">
     <button matTooltip="Delete Forever" (click)="deleteNotesPermanantly()" style="border:none ;background-color:aliceblue" fxLayout="space between centre"> <img
             src="../../../assets/images/download delete perme.svg" width="20px" height="20px"></button>
-    <button matTooltip="restore" (click)="trash(notedata)"  style="border:none ;background-color:aliceblue"> <img
+    <button matTooltip="restore" (click)="restore()"  style="border:none ;background-color:aliceblue"> <img
             src="../../../assets/images/download.restore.svg" width="20px" height="20px"></button>
 </div>
     

@@ -19,9 +19,8 @@ export class IconsComponent implements OnInit {
   isTrash:any;
  
   @Input()notedata:any;
-  @Output() ArchiveEvent = new  EventEmitter<string>();
-  @Output() trashEvent = new  EventEmitter<string>();
-  @Output() deleteEvent = new  EventEmitter<string>();
+  @Output() UpdateEvent = new  EventEmitter<string>();
+  
 
   isTrashComponent= false;
   isDisplayComponent= false;
@@ -29,7 +28,7 @@ export class IconsComponent implements OnInit {
   
   
   
-  colorArray = [{Colorcode:"white", name:"White"},{Colorcode:"#f28b82", name:"Red"},{Colorcode:"#fbbc04", name:"Orange"},{Colorcode:"#fff475", name:"Yellow"},{Colorcode:"#ccff90", name:"Green"},{Colorcode:"#a7ffeb", name:"Teel"},
+  colorArray = [{Colorcode:"white", name:"White"},{Colorcode:'#rgb(173, 93, 93)', name:"Red"},{Colorcode:"#fbbc04", name:"Orange"},{Colorcode:"#fff475", name:"Yellow"},{Colorcode:"#ccff90", name:"Green"},{Colorcode:"#a7ffeb", name:"Teel"},
   {Colorcode:"#cbf0f8", name:"Blue"},{Colorcode:"#aecbfa", name:"Dark-Blue"},{Colorcode:"#d7aefb", name:"Purple"},{Colorcode:"#fdcfe8", name:"Pink"},{Colorcode:"#e6c9a8", name:"Brown"},{Colorcode:"#e8eaed", name:"Gray"}];
   
 
@@ -60,11 +59,11 @@ export class IconsComponent implements OnInit {
    
 
   
-  archive(note:any) {
+  archive() {
     this.isArchive=false;
     this.note.archieveNote(this.notedata.noteId).subscribe((response: any) => {
       console.log(response);
-      this.ArchiveEvent.emit(response)
+      this.UpdateEvent.emit(response)
       if(response.message=true){
         this.snackBar.open('Note Archived succesful', '', {
           duration: 3000,
@@ -83,26 +82,35 @@ export class IconsComponent implements OnInit {
     
   }
 Unarchive() {
-  let data = {
-    isArchived: false,
-  }
+ 
+  
   this.note.archieveNote(this.notedata.noteId).subscribe((res:any)=>{
     console.log("unarchive a note",res);
-   this.ArchiveEvent.emit(res)
+   this.UpdateEvent.emit(res.message)
+   this.snackBar.open('Note Unarchived successfully..', '', {
+    duration: 3000,
+    
   })
+}, error=>this.snackBar.open('failed to Unarchive', '', {
+duration: 2000,
+
+
+})
+
+  )
 }
 trash(note:any) {
  // this.isTrash = !note.isTrash;
   this.note.trashNote(this.notedata.noteId,this.data).subscribe((response: any) => {
     console.log(response);
-    this.trashEvent.emit(response)
+    this.UpdateEvent.emit(response)
     this.snackBar.open('Note trashed successfully..', '', {
         duration: 3000,
-        verticalPosition: 'bottom'
+       
       })
    }, error=>this.snackBar.open('failed to trash', '', {
     duration: 2000,
-    verticalPosition: 'bottom'
+    
 
   })
   )
@@ -111,7 +119,7 @@ trash(note:any) {
   deleteNotesPermanantly() {
     this.note.deleteNotesPermanantly(this.notedata.noteId).subscribe((response: any) => {
       console.log("Note Deleted Successfully", response);
-       this.deleteEvent.emit(response);
+       this.UpdateEvent.emit(response);
 
       this.snackBar.open('Note Deleted Successfully', '', {
         duration: 3000,
@@ -119,14 +127,17 @@ trash(note:any) {
       })
     })
   }
-   restoreNotes()
+   restore()
    {
-    let data = {
-      noteIdList: [this.noteId.noteList],
-      isDeleted: false,
-     }
-   this.note.trashNote(this.noteId.notedata,this.data).subscribe((res:any)=>{
+   
+   this.note.trashNote(this.notedata.noteId,this.data).subscribe((res:any)=>{
     console.log("note restored",res);
+    this.UpdateEvent.emit(res);
+
+      this.snackBar.open('Note restore Successfully', '', {
+        duration: 3000,
+      
+      })
     
     })
    }
@@ -136,10 +147,10 @@ trash(note:any) {
     this.note.changeColor(this.notedata.noteId,color).subscribe((response: any) => {
       console.log(response);
       
-      this.trashEvent.emit(response)
+      this.UpdateEvent.emit(response)
       this.snackBar.open('Color changed successfully..', '', {
           duration: 3000,
-          verticalPosition: 'bottom'
+          
         })
       }
     //  }, error=>this.snackBar.open('failed to change color', '', {

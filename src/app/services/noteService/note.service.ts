@@ -11,6 +11,7 @@ export class NoteService {
   base=environment.baseUrl;
   token:any;
   noteId:any;
+  color:any
 
   constructor(private httpservice:HttpService) {
     this.token=localStorage.getItem('token')
@@ -60,7 +61,7 @@ updateService(data:any,noteId:any)
         'Authorization': 'Bearer ' + this.token
       })
     }
-    return this.httpservice.putService(this.base + `Note/archivenote/${noteId}`,{}, true, header)
+    return this.httpservice.putService(this.base + `Note/ArchieveNote/${noteId}`,{}, true, header)
   }
   trashNote( noteId: any, data:any) {
 
@@ -72,7 +73,7 @@ updateService(data:any,noteId:any)
         'Authorization': 'Bearer '+ this.token
       })
     }
-    return this.httpservice.putService(this.base + `Note/TrashNote/${noteId}`,data, true, header)
+    return this.httpservice.putService(this.base + `Note/IsTrash/${noteId}`,data, true, header)
   }
 
   deleteNotesPermanantly( noteId: any) {

@@ -39,6 +39,7 @@ export class UpdateComponent implements OnInit {
       title:this.title,
       description:this.description,
       "bgColor": "string",
+      
       "registerdDate": "2022-05-17T15:08:53.725Z",
       "modifiedDate": "2022-05-17T15:08:53.725Z"
     }
@@ -46,7 +47,7 @@ export class UpdateComponent implements OnInit {
     {
       console.log("update response=",res);
       
-      this.snackBar.open('Update Successfulll..!','',{
+      this.snackBar.open('Update Note Successfully..!','',{
         duration: 2000,
       });
       
