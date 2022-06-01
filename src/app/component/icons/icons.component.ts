@@ -20,6 +20,7 @@ export class IconsComponent implements OnInit {
  
   @Input()notedata:any;
   @Output() UpdateEvent = new  EventEmitter<string>();
+  @Output() DisplayEvent = new  EventEmitter<string>();
   
 
   isTrashComponent= false;
@@ -36,8 +37,7 @@ export class IconsComponent implements OnInit {
   constructor(private note : NoteService,private snackBar:MatSnackBar,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    // this.isArchive = this.notedata.isArchive;
-    // this.isTrash = this.notedata.isTrash;
+    
     let SelComp = this.route.snapshot.component;
 
     if(SelComp==GetALLNotesComponent)
@@ -147,24 +147,22 @@ trash(note:any) {
     this.note.changeColor(this.notedata.noteId,color).subscribe((response: any) => {
       console.log(response);
       
-      this.UpdateEvent.emit(response)
+      this.DisplayEvent.emit(response)
       this.snackBar.open('Color changed successfully..', '', {
-          duration: 3000,
-          
-        })
-      }
-    //  }, error=>this.snackBar.open('failed to change color', '', {
-    //   duration: 2000,
-    //   verticalPosition: 'bottom'
-
-    // })
+        duration: 3000,
+        
+      })
+    }, error=>this.snackBar.open('failed to change color', '', {
+    duration: 2000,
+    
+     })
     )
   }
-
-  
-  
-
 }
+  
+  
+
+
    
 
 

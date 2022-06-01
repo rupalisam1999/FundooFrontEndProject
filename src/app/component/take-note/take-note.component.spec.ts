@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { TakeNoteComponent } from './take-note.component';
 
@@ -8,7 +10,8 @@ describe('TakeNoteComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TakeNoteComponent ]
+      declarations: [ TakeNoteComponent ],
+      imports:[HttpClientModule,MatSnackBarModule]
     })
     .compileComponents();
   });
@@ -19,7 +22,13 @@ describe('TakeNoteComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('Show method', () => {
+    expect(component.show).toBeTruthy();
+  });
+  it('close method', () => {
+    expect(component.close).toBeTruthy();
+  });
+  it('Show method', () => {
+    expect(component.ngOnInit).toBeTruthy();
   });
 });

@@ -1,9 +1,11 @@
-<div fxLayout="row wrap"  >
-   <div fxLayout="column" fxLayoutAlign="start start"  style="border: 1px solid green; margin: 5px; width: 230px;height: 180px;" *ngFor="let note of receivedNoteList | filter:titleSearch"  fxLayout="column"  fxLayoutAlign="space-around center" class="noteDisplaySetting" [style.background]="note.bgColor" >
-    <p style="margin-right: 150px ;" (click)="openDialog(note)">{{note.title}}</p>
-    <p  style="margin-right: 150px ;" (click)="openDialog(note)">{{note.description}}</p>
-<div style="margin-left: -185px;" class="app-icons" >
-    <app-icons [notedata]="note" (UpdateEvent)="DisplayMessage($event)" class="allicons" ></app-icons>
-</div>
-   </div>
+<div fxLayout="row wrap" style="margin-left:50px ; background-color: white;">
+    <div fxLayout="column" fxLayoutAlign="start start "
+        *ngFor="let note of receivedNoteList | filter:titleSearch" fxLayout="column" fxLayoutAlign="space-around center"
+        class="noteDisplaySetting" [style.background]="note.bgColor" [class.gridList]="gridList">
+        <p class="title"  (click)="openDialog(note)">{{note.title}}</p>
+        <p class="titleD"  (click)="openDialog(note)">{{note.description}}</p>
+        <div style="margin-left: -185px;" class="app-icons"  >
+            <app-icons [notedata]="note" (UpdateEvent)="DisplayMessage($event)" class="allicons"></app-icons>
+        </div>
+    </div>
 </div>

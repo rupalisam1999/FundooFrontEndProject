@@ -3,7 +3,7 @@
 .noteSetting
 {
     border: 1px solid ;
-    border-color:#5f6368 ;
+    border-color:grey ;
     box-shadow: 1px 1px 1px 1px gray;
     border-radius: 12px;
     display: flex;
@@ -16,82 +16,36 @@
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 5px;
+    width: 60%;margin:35px; margin-left:250px
 }
 .takenoteSeting
 {
-    height:20px;width: 200px; 
+    height: 20px;width: 200px; 
     border:none;
 }
 .closebuttonSetting
 {
     margin-left:297px; border: 0px;font-size: large;background-color: white;margin-top: 0px;
 }
-// .descBar{
-//     width: 500px;
-//     height: 40px;
-//     border-radius: 10px;
-//     background-color: white;
-//     border: none;
-//     border: 2px solid yellow;
-// }
+.close
+{
+    margin-right: 40px;padding-top:30px;
+}
+.pin
+{
+    margin-left: 400px;
+}
+ 
 
-.descBar-xs{
-    width: 700px;
-    height: 10px;
-    border-radius: 10px;
-    margin-left: 20px;
-    //border: 2px solid red;
-}
-
-.descBar-sm{
-    width: 700px;
-    height: 10px;
-    border-radius: 10px;
-    margin-left: 10px;
-}
-.icon-sm{
-    margin-top: -5px;
-    margin-left: 10px;
-}
-.icon-xs{
-    margin-top: -5px;
-    margin-left: 20px;
-  // padding-left: 30px;
-}
-.createNote-sm
-{
-    width: 400px;
-    margin-left: 10px;
-}
-.createNote-xs
-{
-    width: 400px;
-    margin-left: 10px;
-}
-.close-sm
-{
-    margin-left: -170px;
-}
-.pin-sm
-{
-    margin-left: -220px;
-}
- .close-xs
- {
-     margin-left: -170px;
- }
-.pin-xs
-{
-    margin-left: -170px;
-}
 .takenote{
-    min-height: 27px;
+   // min-height: 27px;
     padding: 10px 15px;
-    padding-top: 0px;
     padding-right: 15px;
-    padding-bottom: 0px;
     padding-left: 15px;
     font-size: large;
+    height: 15px;
+    width: 300px;
+    border: none;
 }
 .title{
     min-height: 10px;
@@ -100,6 +54,7 @@
     padding-right: 15px;
     padding-bottom: 30px;
     padding-left: 15px;
+    font-size: large ;width: 300px;border:none;
     
 }
 input {border:0;outline:0;}
@@ -108,5 +63,22 @@ input {border:0;outline:0;}
         color: rgba(181, 174, 174, 0.283);
     
     }
+  .checkBox{
+    height: 60px;
+    width:60px
+    
+     
+  }  
+.brushImage{
+    height: 60px;
+    width:60px
 
+}
+.image{
+    height: 60px;
+    width:60px
+}
+.hovericons{
+    border: 0px;background-color: white; height: 20px; width: 20px; margin-left:620px ;
+}
 

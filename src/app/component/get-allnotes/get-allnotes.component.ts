@@ -8,6 +8,7 @@ import { NoteService } from 'src/app/services/noteService/note.service';
 })
 export class GetALLNotesComponent implements OnInit {
   noteList:any;
+  gridList:any
 
   constructor(private note:NoteService) {
    

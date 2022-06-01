@@ -12,12 +12,12 @@ import { UpdateComponent } from '../update/update.component';
 export class DisplayComponent implements OnInit {
   
   filteredSting:string = '';
-  titleSearch:string = '';
+  titleSearch:any;
   
   @Input() receivedNoteList:any;
   
   @Output() DisplayEvent = new EventEmitter<string>();
- 
+  gridList: any;
 
   constructor(public dialog: MatDialog,private data:DataService) { }
 
@@ -27,13 +27,13 @@ export class DisplayComponent implements OnInit {
     this.titleSearch=message
   } )
 
-
+  this.data.store.subscribe((a: any)=>this.gridList=a)
   }
  
   openDialog(note:any): void {
     const dialogRef = this.dialog.open(UpdateComponent, {
-      width: '300px',
-      height:'auto',
+      width: '400px',
+     
       data:note,
       panelClass: 'my-custom-dialog-class'
       
