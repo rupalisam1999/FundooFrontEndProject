@@ -37,6 +37,7 @@ import{ MatTooltipModule} from '@angular/material/tooltip';
 import { FilterPipe } from './pipes/pipes/filter.pipe';
 
 
+
  
 
 
@@ -79,7 +80,8 @@ import { FilterPipe } from './pipes/pipes/filter.pipe';
     MatDialogModule,
     MatSnackBarModule,
     MatMenuModule,
-    MatTooltipModule
+    MatTooltipModule,
+    
     
     
   ],

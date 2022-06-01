@@ -1,2 +1,2 @@
 <app-take-note (messageEvent)="DisplayMessage($event)"></app-take-note>
-<app-display [receivedNoteList]="noteList" (DisplayEvent)="DisplayMessage($event)" ></app-display>
+<app-display [receivedNoteList]="noteList" (DisplayEvent)="DisplayMessage($event)" [class.gridList]="gridList"></app-display>

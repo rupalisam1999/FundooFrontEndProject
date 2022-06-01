@@ -1,13 +1,13 @@
-<div [style.background]="data.bgColor" style="padding-left: 5px;margin: 0px;" >
+<div [style.background]="data.bgColor"  >
     <div fxLayout="column"  fxLayoutAlign="space-around center" class="noteDisplaySetting" >
  
-     <input type="text" placeholder="Title" style="font-size: larger;height: 20px;width: 100%;background-color: transparent;border: none;" [(ngModel)]="title">
-     <input type="text" placeholder="description" style="font-size: medium;margin-top: 10px;height: 20px;width: 100%;background-color: transparent;"[(ngModel)]="description">
+     <input class="matInput" type="text" placeholder="Title" [(ngModel)]="title">
+     <input class="matInput" type="text" placeholder="description" [(ngModel)]="description">
  
      
      
      <div style="display: flex;">
-       <app-icons [notedata]="data" style="margin-top: 30px;"></app-icons>
+       <app-icons [notedata]="data" style="margin-top: 30px;" ></app-icons>
        <button (click)="onNoClick()" class="closeButton">update</button>      
      </div>
      

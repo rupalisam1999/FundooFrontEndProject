@@ -1,4 +1,7 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 import { ResetPasswordComponent } from './reset-password.component';
 
@@ -8,7 +11,8 @@ describe('ResetPasswordComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ResetPasswordComponent ]
+      declarations: [ ResetPasswordComponent ],
+      imports:[ReactiveFormsModule,HttpClientModule,AppRoutingModule]
     })
     .compileComponents();
   });
@@ -19,7 +23,7 @@ describe('ResetPasswordComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('OnSubmit ResetPassword', () => {
+    expect(component.OnSubmit).toBeTruthy();
   });
 });

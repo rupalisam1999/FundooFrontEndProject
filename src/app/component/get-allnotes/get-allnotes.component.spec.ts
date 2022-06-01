@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GetALLNotesComponent } from './get-allnotes.component';
@@ -8,7 +9,8 @@ describe('GetALLNotesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GetALLNotesComponent ]
+      declarations: [ GetALLNotesComponent ],
+      imports:[HttpClientModule]
     })
     .compileComponents();
   });

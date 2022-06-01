@@ -29,7 +29,9 @@ export class UpdateComponent implements OnInit {
     this.description=this.data.description;
     
    console.log(this.data)
+  
   }
+  
 
   onNoClick(): void {
 
@@ -59,7 +61,11 @@ export class UpdateComponent implements OnInit {
      
     })
     this.dialogRef.close();
+    
   }
+  
+ 
+  
 
   
   }
